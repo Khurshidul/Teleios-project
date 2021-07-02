@@ -47,40 +47,50 @@ else{
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <title>Login</title>
+    <style>
+        .mx-auto{
+            padding-top: 200px;
+        }
+    </style>
 </head>
-<body>
+<body  style= "background-image: url('image/pic17.jpg');">
 <section>
-    <div class="container bg-red">
+    <div class="container">
        <div class="row">
-           <div class="col-md-6">
-               
-               <h1 class="text-center mb-5">
-                   Sign In
+           <div class="col-md-6 mx-auto">
 
-               </h1>
-               <form action="" method="post">
+          
+           
+            
+   
+
+               <form action="project.php" method="post">
                    <div class="row mb-3">
-                       <label for="user" class="col-sm-3 col-form-label">@Username:</label>
+                       <label for="user" class="col-sm-3 col-form-label" style= "color:#ADD8E6">@Username:</label>
                        <div class="col-sm-9">
                            <input
                                type="text"
                                class="form-control"
+                               placeholder="Username"
                                id="user"
                                name="user"
                                value="">
                        </div>
                    </div>
                    <div class="row mb-3">
-                       <label for="password" class="col-sm-3 col-form-label">Password:</label>
+                       <label for="password" class="col-sm-3 col-form-label" style= "color:#ADD8E6">Password:</label>
                        <div class="col-sm-9">
                            <input
                                type="password"
                                class="form-control"
+                               placeholder="Password"
                                id="password"
                                name="password"
                                value="">
@@ -88,8 +98,11 @@ else{
                    </div>
 
 
-                   <button type="submit" class="btn btn-primary">Submit</button>
+                   <button type="submit" class="btn btn-primary">Sign In</button>
+                   <a href="sign_up.php" class="btn btn-primary">Creat a new account.</a>
+
                </form>
+              
            </div>
        </div>
 
