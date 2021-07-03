@@ -1,4 +1,40 @@
 <?php
+$mysqli = new mysqli("localhost","Md. Khurshidul","Alam", "khurshidulalam5@gmail.com", "Male", "Bd", "Bd.", "members-data");
+
+// Check connection
+if ($mysqli -> connect_errno) {
+
+  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+  exit();
+}
+
+$first_name = isset($_POST['first-name'])?$_POST['first-name']:false;
+$last_name = isset($_POST['last-name'])?$_POST['last-name']:false;
+
+$email = isset($_POST['email'])?$_POST['email']:false;
+$gender = isset($_POST['gender'])?$_POST['gender']:false;
+$institute = isset($_POST['institute'])?$_POST['institute']:false;
+$country = isset($_POST['country'])?$_POST['country']:false;
+
+
+
+
+if($first_name != false && $last_name != false && $email != false && $gender != false && $institute != false && $country != false){
+
+
+$query = "INSERT INTO `new-membersinfo` (`Id`, `First-Name`, `Last-Name`, `Email`, `Gender`, `Institute`, `Country`) VALUES (NULL, 'Md. Khurshidul', 'Alam', 'khurshidulalam5@gmail.com', 'Male', 'Bd', 'Bd.')";
+
+ if ($mysqli->query($query) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $query . "<br>" . $mysqli->error;
+}
+
+}
+
+else{
+    echo "You don't submit your info";
+}
 
 ?>
 
@@ -40,7 +76,7 @@
                                placeholder="first-name"
                                aria-level="first-name"
                                id="first-name"
-                               name="first-name"
+                               name="first_name"
                                value=""
                                required>
                                <div class="valid-feedback">
@@ -58,7 +94,7 @@
                                placeholder="last-name"
                                aria-level="last-name"
                                id="last-name"
-                               name="last-name"
+                               name="last_name"
                                value="">
                        </div>
                        </div>
@@ -100,7 +136,7 @@
 <p><strong>Country</strong></p>
 
 <select class="$form-select-border-width: 5px; form-select-sm mb-2" aria-label=".form-select-sm example">
-<option selected="Country">Choose</option>
+<option selected="country">Choose</option>
 <option value="0">Afghanistan</option>
 <option value="1">Albania</option>
 <option value="2">Algeria</option>
