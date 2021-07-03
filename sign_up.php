@@ -16,6 +16,7 @@
     <link rel="icon" type="image/jpg" href="image/teleios-icon.jpg">
 </head>
 <body>
+
 <section>
     <div class="container">
        <div class="row">
