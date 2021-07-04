@@ -1,217 +1,202 @@
 <?php
-$mysqli = new mysqli("localhost","Md. Khurshidul","Alam", "khurshidulalam5@gmail.com", "Male", "Bd", "Bd.", "members-data");
+$mysqli = new mysqli("localhost", "khurshid", "123456", "members-data");
 
 // Check connection
-if ($mysqli -> connect_errno) {
+if ($mysqli->connect_errno) :
 
-  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-  exit();
-}
+    echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+    exit();
+endif;
 
-$first_name = isset($_POST['first-name'])?$_POST['first-name']:false;
-$last_name = isset($_POST['last-name'])?$_POST['last-name']:false;
+$first_name = isset($_POST['first_name']) ? $_POST['first_name'] : false;
+$last_name = isset($_POST['last_name']) ? $_POST['last_name'] : false;
 
-$email = isset($_POST['email'])?$_POST['email']:false;
-$gender = isset($_POST['gender'])?$_POST['gender']:false;
-$institute = isset($_POST['institute'])?$_POST['institute']:false;
-$country = isset($_POST['country'])?$_POST['country']:false;
-
-
+$email = isset($_POST['email']) ? $_POST['email'] : false;
+$gender = isset($_POST['gender']) ? $_POST['gender'] : false;
+$institute = isset($_POST['institute']) ? $_POST['institute'] : false;
+$country = isset($_POST['country']) ? $_POST['country'] : false;
 
 
-if($first_name != false && $last_name != false && $email != false && $gender != false && $institute != false && $country != false){
 
 
-$query = "INSERT INTO `new-membersinfo` (`Id`, `First-Name`, `Last-Name`, `Email`, `Gender`, `Institute`, `Country`) VALUES (NULL, 'Md. Khurshidul', 'Alam', 'khurshidulalam5@gmail.com', 'Male', 'Bd', 'Bd.')";
+if ($first_name != false && $last_name != false && $email != false && $gender != false && $institute != false && $country != false) :
 
- if ($mysqli->query($query) === TRUE) {
-  echo "New record created successfully";
-} else {
-  echo "Error: " . $query . "<br>" . $mysqli->error;
-}
 
-}
+    $query = "INSERT INTO `new-membersinfo` (`First-Name`, `Last-Name`, `Email`, `Gender`, `Institute`, `Country`) VALUES ('{$first_name}', '$last_name', '$email', '$gender', '$institute', '$country')";
+    if ($mysqli->query($query) === TRUE) :
+        echo "New record created successfully";
+    else :
+        echo "Error: " . $query . "<br>" . $mysqli->error;
+    endif;
 
-else{
+else :
     echo "You don't submit your info";
-}
+endif;
 
 ?>
 
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <title>create_new_account.com</title>
     <link rel="icon" type="image/jpg" href="image/teleios-icon.jpg">
     <style>
-    h4{
+    h4 {
         color: #074566;
     }
     </style>
 </head>
+
 <body>
 
-<section>
-    <div class="container">
-       <div class="row">
-           <div class="col-md-12 mt-5 boarder boarder-primary">
-               <h4 class="text-center mb-5 boarder boarder-primary"><strong>Fill up your Information.</strong></h4>
-               <hr styel="height: 1px; color: black;  background-color:#2874A6;">
-               <div class="row">
-               <div class="col-md-5 mx-auto" style="background-color:#2ECC71 ;">
-               <form action="project.php" method="post">
-                   <div class="row mb-3">
-                       <label for="first-name" class="col-sm-3 col-form-label"><strong>First Name:</strong></label>
-                       <div class="col">
-                           <input
-                               type="text"
-                               class="form-control"
-                               placeholder="first-name"
-                               aria-level="first-name"
-                               id="first-name"
-                               name="first_name"
-                               value=""
-                               required>
-                               <div class="valid-feedback">
-                               Looks Good!
-                               
-                       </div>
-                       </div>
-                   </div>
-                   <div class="row mb-3">
-                       <label for="last-name" class="col-sm-3 col-form-label"><strong>Last Name:</strong></label>
-                       <div class="col">
-                           <input
-                               type="text"
-                               class="form-control"
-                               placeholder="last-name"
-                               aria-level="last-name"
-                               id="last-name"
-                               name="last_name"
-                               value="">
-                       </div>
-                       </div>
-                   <div class="row mb-3">
-                       
-                       <label for="email" class="col-sm-3 col-form-label"><strong>Email:</strong></label>
-                       <div class="col-sm-7">
-                           <input
-                               type="text"
-                               class="form-control"
-                               placeholder="enter-your-email-address"
-                               id="email"
-                               name="email"
-                               value="">
-                       </div>
-                       </div>
-                       <p><strong>Gender</strong></p>
-                       
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mt-5 boarder boarder-primary">
+                    <h4 class="text-center mb-5 boarder boarder-primary"><strong>Fill up your Information.</strong></h4>
+                    <hr styel="height: 1px; color: black;  background-color:#2874A6;">
+                    <div class="row">
+                        <div class="col-md-5 mx-auto" style="background-color:#2ECC71 ;">
+                            <form action="" method="post">
+                                <div class="row mb-3">
+                                    <label for="first-name" class="col-sm-3 col-form-label"><strong>First
+                                            Name:</strong></label>
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="first-name"
+                                            aria-level="first-name" id="first-name" name="first_name" value="first"
+                                            required>
+                                        <div class="valid-feedback">
+                                            Looks Good!
 
-                   <select class="$form-select-border-width: 5px; form-select-sm mb-2" aria-label=".form-select-sm example">
-  <option selected="gender">Gender</option>
-  <option value="0">Male</option>
-  <option value="1">Female</option>
-  <option value="">Other</option>
-</select>
-<div class="row mb-3">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="last-name" class="col-sm-3 col-form-label"><strong>Last
+                                            Name:</strong></label>
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="last-name"
+                                            aria-level="last-name" id="last-name" name="last_name" value="">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
 
-<label for="institute" class="col-sm-3 col-form-label"><strong>Institute:</strong></label>
-<div class="col-sm-12">
-    <input
-        type="text"
-        class="form-control"
-        placeholder="enter-your-institute-name"
-        id="institute"
-        name="institute"
-        value="">
-<div class="row mb-5">
-</div>
-<p><strong>Country</strong></p>
+                                    <label for="email" class="col-sm-3 col-form-label"><strong>Email:</strong></label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" placeholder="enter-your-email-address"
+                                            id="email" name="email" value="">
+                                    </div>
+                                </div>
+                                <p><strong>Gender</strong></p>
 
-<select class="$form-select-border-width: 5px; form-select-sm mb-2" aria-label=".form-select-sm example">
-<option selected="country">Choose</option>
-<option value="0">Afghanistan</option>
-<option value="1">Albania</option>
-<option value="2">Algeria</option>
-<option value="3">Andorra</option>
-<option value="4">Angola</option>
-<option value="5">Argentina</option>
-<option value="6">Armenia</option>
-<option value="7">Australia</option>
-<option value="8">Austria</option>
-<option value="9">Bahamas</option>
-<option value="10">Bahrain</option>
-<option value="11">Bangladesh</option>
-<option value="12">Barbados</option>
-<option value="13">Barbados</option>
-<option value="14">Belgium</option>
-<option value="15">Bhutan</option>
-<option value="16">Bolivia (Plurinational State of)</option>
-<option value="17">Bosnia and Herzegovina</option>
-<option value="18">Brazil</option>
-<option value="19">Bulgaria</option>
-<option value="20">Cambodia</option>
-<option value="21">Canada</option>
-<option value="22">Central African Republic</option>
-<option value="23">Chile</option>
-<option value="24">China</option>
-<option value="25">Colombia</option>
-<option value="26">Cook Islands</option>
-<option value="27">Costa Rica</option>
-<option value="28">Croatia</option>
-<option value="29">Cuba</option>
-<option value="30">Democratic People's Republic of Korea</option>
-<option value="31">Denmark</option>
-<option value="32">Ecuador</option>
-<option value="33">Egypt</option>
-<option value="34">Estonia</option>
-<option value="35">Finland</option>
-<option value="36">France</option>
-<option value="37">Gambia</option>
-<option value="38">Germany</option>
-<option value="39">Ghana</option>
-<option value="40">Greece</option>
-<option value="41">Hungary</option>
-<option value="42">Iceland</option>
-<option value="43">India</option>
-<option value="44">Indonesia</option>
-<option value="45">Iran (Islamic Republic of)</option>
-<option value="46">Iraq</option>
-<option value="47">Ireland</option>
-<option value="48">Italy</option>
-<option value="49">Japan</option>
-<option value="50">Jordan</option>
-<option value="">Other</option>
-</select>
-                  
-                  
-                  <div>
-                   <button type="submit" class="btn btn-primary"><strong>Submit</strong></button>
-                   </div>
-               </form>
-           </div>
-       </div>
 
-    </div>
-</section>
+                                <select class="$form-select-border-width: 5px; form-select-sm mb-2" name="gender">
+                                    <option>Gender</option>
+                                    <option value="1" selected>Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                </select>
+                                <div class="row mb-3">
 
-<!-- Optional JavaScript; choose one of the two! -->
+                                    <label for="institute"
+                                        class="col-sm-3 col-form-label"><strong>Institute:</strong></label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" placeholder="enter-your-institute-name"
+                                            id="institute" name="institute" value="">
+                                        <div class="row mb-5">
+                                        </div>
+                                        <p><strong>Country</strong></p>
 
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+                                        <select class="$form-select-border-width: 5px; form-select-sm mb-2"
+                                            name="country">
+                                            <option selected="country">Choose</option>
+                                            <option value="0">Afghanistan</option>
+                                            <option value="1">Albania</option>
+                                            <option value="2">Algeria</option>
+                                            <option value="3">Andorra</option>
+                                            <option value="4">Angola</option>
+                                            <option value="5">Argentina</option>
+                                            <option value="6">Armenia</option>
+                                            <option value="7">Australia</option>
+                                            <option value="8">Austria</option>
+                                            <option value="9">Bahamas</option>
+                                            <option value="10">Bahrain</option>
+                                            <option value="11">Bangladesh</option>
+                                            <option value="12">Barbados</option>
+                                            <option value="13">Barbados</option>
+                                            <option value="14">Belgium</option>
+                                            <option value="15">Bhutan</option>
+                                            <option value="16">Bolivia (Plurinational State of)</option>
+                                            <option value="17">Bosnia and Herzegovina</option>
+                                            <option value="18">Brazil</option>
+                                            <option value="19">Bulgaria</option>
+                                            <option value="20">Cambodia</option>
+                                            <option value="21">Canada</option>
+                                            <option value="22">Central African Republic</option>
+                                            <option value="23">Chile</option>
+                                            <option value="24">China</option>
+                                            <option value="25">Colombia</option>
+                                            <option value="26">Cook Islands</option>
+                                            <option value="27">Costa Rica</option>
+                                            <option value="28">Croatia</option>
+                                            <option value="29">Cuba</option>
+                                            <option value="30">Democratic People's Republic of Korea</option>
+                                            <option value="31">Denmark</option>
+                                            <option value="32">Ecuador</option>
+                                            <option value="33">Egypt</option>
+                                            <option value="34">Estonia</option>
+                                            <option value="35">Finland</option>
+                                            <option value="36">France</option>
+                                            <option value="37">Gambia</option>
+                                            <option value="38">Germany</option>
+                                            <option value="39">Ghana</option>
+                                            <option value="40">Greece</option>
+                                            <option value="41">Hungary</option>
+                                            <option value="42">Iceland</option>
+                                            <option value="43">India</option>
+                                            <option value="44">Indonesia</option>
+                                            <option value="45">Iran (Islamic Republic of)</option>
+                                            <option value="46">Iraq</option>
+                                            <option value="47">Ireland</option>
+                                            <option value="48">Italy</option>
+                                            <option value="49">Japan</option>
+                                            <option value="50">Jordan</option>
+                                            <option value="">Other</option>
+                                        </select>
 
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
+
+                                        <div>
+                                            <button type="submit"
+                                                class="btn btn-primary"><strong>Submit</strong></button>
+                                        </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+    </section>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 -->
 </body>
-</html>
 
+</html>

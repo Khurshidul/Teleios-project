@@ -69,7 +69,7 @@ else{
            <div class="col-md-6 mx-auto">
 
         
-               <form action="project.php" method="post">
+               <form action="" method="post">
                    <div class="row mb-3">
                        <label for="user" class="col-sm-3 col-form-label" style= "color:#ADD8E6">@Username:</label>
                        <div class="col-sm-9">
